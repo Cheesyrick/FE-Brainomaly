@@ -1,0 +1,558 @@
+/* Reset margin dan padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Font dasar */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+/* Kontainer utama */
+.container {
+  padding-inline: 32px;
+  margin-inline: auto;
+  max-width: 1300px;
+}
+/* Header utama */
+header {
+  background-color: lightskyblue;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.main-header {
+  min-height: 90px;
+  padding-block: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+/* Nama brand */
+.brand-name {
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+/* Navigation Drawer (menu samping) */
+.navigation-drawer {
+  min-height: 100vh;
+  width: 200px;
+  padding: 20px 10px;
+  background-color: #fff;
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  box-shadow: 0 0 4px 2px #00000033;
+  transform: translateX(-100%);
+  transition: transform 350ms ease;
+  z-index: 9999;
+}
+.navigation-drawer.open {
+  transform: translateX(0);
+}
+.drawer-button {
+  padding: 8px;
+  border: 0;
+  border-radius: 4px;
+  display: inline-block;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 28px;
+  color: #141e16;
+  cursor: pointer;
+}
+/* Daftar navigasi dalam drawer */
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 20px;
+}
+.nav-list li a {
+  padding: 6px 10px;
+  display: block;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-list li a:hover {
+  color: #0077ff;
+  text-decoration: underline;
+}
+/* Konten utama */
+.main-content {
+  padding-block: 20px;
+}
+/*homepage*/
+.home-page {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* Judul halaman */
+.home-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+/* Daftar cerita */
+.story-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Deteksi jika hanya ada satu .story-item */
+.story-list:has(.story-item:nth-child(1):nth-last-child(1)) {
+  justify-content: center;
+}
+
+/* Kartu cerita */
+.story-item {
+  background: #fff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 200ms ease-in-out;
+  max-width: 380px; /* Mencegah memanjang jika hanya 1 kartu */
+  width: 100%;
+}
+
+.story-item:hover {
+  transform: translateY(-6px);
+}
+
+/* Gambar cerita */
+.story-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+/* Konten teks di dalam kartu */
+.story-item h2 {
+  font-size: 1.25rem;
+  margin: 0.75rem 1rem 0.25rem;
+  color: #222;
+}
+
+.story-item p {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 1rem 1rem;
+}
+
+/* Peta */
+#map {
+  width: 100%;
+  height: 400px;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.image-modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.image-modal-overlay.open {
+  display: flex;
+}
+
+.image-modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .navigation-drawer {
+    min-height: auto;
+    position: static;
+    transform: translateX(0);
+    width: auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+  }
+  .nav-list {
+    flex-direction: row;
+    gap: 0 1rem;
+  }
+  .drawer-button {
+    display: none;
+  }
+}
+/* Responsif untuk layar kecil */
+@media (max-width: 600px) {
+  .story-item h2 {
+    font-size: 1.1rem;
+  }
+  .story-item p {
+    font-size: 0.9rem;
+  }
+}
+/* Container dan form */
+.add-story-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+/* Heading */
+.add-story-page h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  color: #333;
+}
+/* Form layout */
+#add-story-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+/* Label */
+#add-story-form label {
+  font-size: 1rem;
+  color: #555;
+}
+/* Input & textarea */
+#add-story-form input[type="file"],
+#add-story-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f9f9f9;
+  transition: border-color 0.3s;
+}
+#add-story-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+#add-story-form input[type="file"] {
+  padding: 0.5rem;
+}
+/* Tombol */
+#add-story-form button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#add-story-form .btn-submit {
+  background-color: #0077ff;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+#add-story-form .btn-submit:hover {
+  background-color: #0056cc;
+}
+/* Tombol kamera */
+#open-camera-btn,
+#capture-btn {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s;
+}
+#open-camera-btn:hover,
+#capture-btn:hover {
+  background-color: #e0e0e0;
+}
+/* Video & canvas */
+#camera,
+#canvas {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+/* Peta */
+#map {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+/* Tombol batal */
+#cancel-capture-btn {
+  background-color: #ff6347;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+#cancel-capture-btn:hover {
+  background-color: #e53e3e;
+}
+::view-transition-old(main-content),
+::view-transition-new(main-content) {
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+::view-transition-old(main-content) {
+  animation-name: fade-out;
+}
+::view-transition-new(main-content) {
+  animation-name: fade-in;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0.6;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+.skip-link {
+  position: absolute;
+  left: 0;
+  top: -40px;
+  background: lightskyblue;
+  color: #2600ff;
+  padding: 8px 16px;
+  z-index: 1000;
+  text-decoration: none;
+  transition: top 0.3s ease;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.skip-link:focus {
+  top: 10px;
+}
+.container h1 {
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+/* Label untuk input */
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  color: #444;
+}
+/* Input field */
+form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+/* Tombol submit */
+.btn-submit {
+  width: 100%;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.btn-submit:hover {
+  background-color: #2c3e9f;
+}
+/* Link daftar atau login */
+.container p {
+  text-align: center;
+  margin-top: 1rem;
+}
+.container a {
+  color: #3f51b5;
+  text-decoration: none;
+  font-weight: bold;
+}
+.container a:hover {
+  text-decoration: underline;
+}
+/* Judul Halaman Logout */
+.logout-page h1 {
+  font-size: 1.75rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+/* Tombol Logout */
+#logout-btn {
+  position: relative;
+  left: 46%;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+#logout-btn:hover {
+  background-color: #c0392b;
+}
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+::view-transition-old(app),
+::view-transition-new(app) {
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+}
+#photo-preview {
+  display: none;
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+footer {
+  background-color: lightskyblue;
+  color: #000000;
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+  z-index: 10;
+}
+
+footer a {
+  color: #0077ff;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.3s;
+}
+
+footer a:hover,
+footer a:focus {
+  color: #000000;
+  text-decoration: underline;
+}
+
+footer .footer-links {
+  margin-top: 8px;
+}
+
+#globalNotificationToggle {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin-left: auto;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#globalNotificationToggle:hover {
+  background-color: #3b7ac6;
+  transform: scale(1.05);
+}
+
+#globalNotificationToggle:active {
+  background-color: #356bab;
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  #globalNotificationToggle {
+    font-size: 13px;
+    padding: 8px 12px;
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+.bookmark-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.delete-bookmark-btn {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+#installAppBtn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin-left: auto;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
